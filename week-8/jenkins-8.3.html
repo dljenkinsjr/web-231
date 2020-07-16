@@ -1,0 +1,116 @@
+<!---- ===========================================
+  	; Title: Assignment 8.3
+  	; Author: Professor Krasso
+  	; Date: 16 July 2020
+  	; Modified By: Douglas Jenkins
+  	; Description: Toggle and Alert using Jquery
+  	;=========================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Jenkins 8.3</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <style>
+
+    body{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    padding: 20px;
+    }
+
+    .topbar{
+    background-color: #746305;
+    width: 100%;
+    height: 3.5em;
+  }
+
+  h2 {
+      padding-top: 20px;
+    }
+
+    table, tr, td{
+      border-collapse: collapse;
+      padding: 10px;
+    }
+
+    tr:nth-child(odd) {
+      background-color: #eaeaea;
+      }
+
+
+
+
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!--Toggle the information to disappear-->
+  <div class="topbar"></div>
+  <h2>Exercise 8.3</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum bibendum fermentum mauris,
+    sit amet tempor ligula faucibus et. In facilisis dui ut
+    justo scelerisque fringilla nec sit amet quam.
+    Maecenas quis cursus justo. Vestibulum at eros non diam
+    rhoncus vestibulum eu in purus. Nullam tincidunt purus vel venenatis pellentesque.
+    Phasellus id ipsum aliquam, luctus quam ornare,
+    tempus ligula. Duis tincidunt lacus euismod tristique auctor.</p>
+
+    <button>Toggle</button>
+
+    <br>
+    <br>
+    <br>
+
+    <!--Creates table where the alert will be sent to the div-->
+    <table>
+      <tr>
+          <td><a href="#" class="fruitId">1</a></td>
+          <td>Apples</td>
+      </tr>
+      <tr>
+          <td><a href="#" class="fruitId">2</a></td>
+          <td>Pears</td>
+      </tr>
+      <tr>
+          <td><a href="#" class="fruitId">3</a></td>
+          <td>Oranges</td>
+      </tr>
+      <tr>
+        <td><a href="#" class="fruitId">4</a></td>
+        <td>Kiwi's</td>
+    </tr>
+    <tr>
+      <td><a href="#" class="fruitId">5</a></td>
+      <td>Mango</td>
+  </tr>
+  </table>
+
+<script type="text/javascript">
+
+// When the Button is clicked on and the toggle will be active for the paragraph
+// Part A
+ $("button").click(function(){
+   $("p").toggle();
+ });
+
+ // Creates alert box
+// Part B
+$(function() {
+      $(".fruitId").click(function (event) {
+            event.preventDefault();
+            var fruitId = $(this).text();
+            var fruitType = $(this).closest("td").next().text();
+            alert("{fruit_id: " + fruitId + ", fruit_type: " + fruitType + "}");
+        });
+    });
+
+</script>
+
+</body>
+</html>
