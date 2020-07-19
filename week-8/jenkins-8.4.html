@@ -1,0 +1,96 @@
+<!---- ===========================================
+  	; Title: Assignment 8.4
+  	; Author: Professor Krasso
+  	; Date: 20 July 2020
+  	; Modified By: Douglas Jenkins
+  	; Description: table that calls out an alert message.
+  	;=========================================== -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Jenkins 8.4</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- you will need to the href to point to your root directories css file -->
+  <link rel="stylesheet" href="/path/to/your/root/css/file">
+
+  <style type="text/css">
+     #emps tbody tr:hover {
+      cursor: pointer;
+      background-color: #ffff99;
+    }
+
+    table, tr, td{
+      border: solid 1px #000;
+      border-collapse: collapse;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="emps"></div>
+
+<script type="text/javascript">
+
+  // jQuery onClick event
+  // Don't remove this, just add your code to the body of the event (curly braces)
+  $(function() {
+    $("table tr").click(function () {
+      var employeeID = $(this).find('td:first').html();
+      alert(getEmployee (employeeID)); // function that was created will get called here and so will the jQuery
+    })
+  });
+
+  // employees array is called then told if the id is equal to employee the message will be called out
+  function getEmployee(id){
+  for (let x = 0; x < employees.length; x++){
+    if (id == employees[x].id){
+      var message = "id_" + employees[x].id + " " + " firstName_" + employees[x].firstName + " " + " lastName_" +
+      employees[x].lastName + " " + " title_" + employees[x].title;
+      return message;
+    }
+  }
+
+}
+
+//creates the constructor employee object
+
+function employee(id, firstName, lastName, title){
+this.id = id;
+this.firstName = firstName;
+this.lastName = lastName;
+this.title = title;
+};
+
+// List of employees names
+
+const employees = [
+  new employee(1, 'John', 'Doe', 'Web Developer'),
+  new employee(2, 'Jack', 'Miller', 'Product Designer'),
+  new employee(3, 'Terrance', 'Jackson', 'Co-Owner'),
+  new employee(4, 'Mary', 'Sue', 'Co-Owner'),
+  new employee(5, 'Tina', 'Jefferson', 'UI Designer')
+];
+
+
+// Table that is created
+
+var output = "<table><tbody>";
+
+for(var f=0; f < employees.length; f++){
+  output += "<tr><td>" + employees[f].id + "</td>" + "<td>" + employees[f].firstName + "</td>" + "<td>" +
+  employees[f].lastName + "</td>"  + "<td>" + employees[f].title + "</td></tr>";
+}
+
+output += "</tbody></table>";
+
+// posts to the html
+document.getElementById('emps').innerHTML = output;
+
+</script>
+</body>
+</html>
